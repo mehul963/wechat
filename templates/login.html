@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
+
+{% block main %}
+
+<main style="display: flex;place-items: center ;justify-content:center;gap: 1em; max-width: 80%; flex-direction: column; margin: auto;" class="mt-1">
+
+    {% if change_url == 'signup' %}
+        <h2 style="margin: auto">Login</h2>
+    {% else %}
+        <h2 style="margin: auto">Sign Up</h2>
+    {% endif %}
+
+    <p>{{error}}</p>
+    <form action={{action}} method="post" style="display: flex;flex-direction: column;gap: 2rem;">
+        {% csrf_token %}
+        <input placeholder="Username" type="text" name="username">
+        <input placeholder="Password" type="password" name="password">
+        <button type="submit" class="text-white bg-primary btn">{{btn_type}}</button>
+    </form>
+    <p class="mx-auto mt-1">{{change_text}} <span> <a href="{{change_url}}" class="text-underline">{{change_url}}</a></span></p>
+
+    <div>
+        
+    </div>
+</main>
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'js/main.js' %}"></script>
+{% endblock %}

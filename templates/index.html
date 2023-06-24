@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block main %}
+    <main class="flex h-80 w-90 w-full mx-auto">
+        <aside class="side flex-grow-1 max-w25 hide">
+            <div class="flex flex-col gap-10px ">
+                {% for user in users%}
+                <div class="user">{{user}}</div>
+                {% endfor %}
+            </div>
+        </aside>
+        <aside class="chat-container flex flex-col flex-grow-4">
+            <div class="sticky t-0 chat-user" id="chat-user"></div>
+            <input type="hidden" value="" id="user-input">
+            <div class="chat flex-grow-1 flex flex-col gap-10px" id="msg">
+            </div>
+            <div class="flex">
+                <input type="text" placeholder="Message" id="text-msg" hint-enter="true" class="input-message message flex-grow-1">
+                <button class="btn primary" onclick="send()"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-send" viewBox="0 0 16 16">
+                    <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576 6.636 10.07Zm6.787-8.201L1.591 6.602l4.339 2.76 7.494-7.493Z"/>
+                  </svg></button>
+            </div>
+        </aside>
+        
+    </main>
+{% endblock %}
+{% block script %}
+    <script>
+        const sender='{{request.user.username}}'
+        const set_chat=(data)=>{
+            const div = document.createElement("div")
+            div.innerText = data['text']
+            if(data['sender'].username==='{{request.user.username}}'){
+                div.classList.add('right')
+            }else{
+                div.classList.add('left')
+            }
+            document.getElementById("msg").appendChild(div)
+            const myDiv = document.getElementById("msg")
+            myDiv.scrollTop += (myDiv.scrollHeight)
+
+        }
+        const send_get = (receiver) => {
+            const xhr = new XMLHttpRequest();
+            
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    const data=JSON.parse(xhr.response)
+                    console.log(data)
+                    for (const i in data) {
+                        set_chat(data[i])
+                    }
+                    
+                } else {
+                    // Request failed
+                    // Handle error here
+                    console.error('Request failed');
+                }
+                }
+            };
+
+            // Construct the URL with query parameters
+            const url = '/get_chat?receiver=' + encodeURIComponent(receiver);
+
+            xhr.open('GET', url, true);
+            xhr.send();
+        };
+
+
+    </script>
+    <script src="{% static 'js/ws.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+{% endblock %}
+</body>
+
+</html>

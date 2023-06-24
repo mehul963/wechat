@@ -1,0 +1,53 @@
+:root{
+    --primary:blue;
+    color: white;
+}
+body{
+    background-color: rgb(56 54 54 / 90%);
+    /* color: white; */
+}
+a{
+    text-decoration: none;
+    color: white;
+}
+
+.primary{
+    color: var(--primary);
+}
+
+.text-underline{
+    text-decoration: underline;
+}
+
+.mb-1{
+    margin-bottom: 1em;
+}
+.mt-1{
+    margin-top: 1em;
+}
+.m-1{
+    margin: 1em;
+}
+.mx-auto{
+    margin-inline: auto;
+}
+
+input[type='text'],
+input[type='password']{
+    padding-block: 0.5em;
+    padding-inline: 1em;
+}
+.text-white{
+    color: white;
+}
+
+.btn{
+    padding: 1em;
+    border: none;
+    outline: white 1px solid;
+    border-radius: 10px;
+}
+
+.bg-primary{
+    background-color: var(--primary);
+}

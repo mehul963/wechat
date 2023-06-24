@@ -1,0 +1,144 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.right {
+    text-align: right;
+	max-width: 40%;
+	border-radius: 20px 0;
+	background-color: burlywood;
+	padding: 0.5em 1em;
+	align-self: flex-end;
+}
+.left{
+	text-align: left;
+	float: left;
+	max-width: 40%;
+	border-radius: 0 20px;
+	background-color: burlywood;
+	padding: 0.5em 1em;
+	align-self: flex-start;
+}
+.chats-part{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    min-width: 17rem;
+    margin: auto;
+}
+.chats-part h2 {
+    margin: 0;
+}
+.users-div{
+    padding: 1em;
+    background: beige;
+    border-radius: 0.5rem;
+}
+a{
+    text-decoration: none;
+    color: white;
+    margin-right: 1em;
+}
+.fixed{
+	position: fixed;
+}
+.relative{
+	position: relative;
+}
+
+
+.flex{
+	display: flex;
+}
+.flex-col{
+	flex-direction: column;
+}
+.flex-grow-1{
+	flex-grow: 1;
+}
+.flex-grow-4{
+	flex-grow: 4;
+}
+.chat{
+	background-color: blueviolet;
+	overflow-y: scroll;
+}
+
+.gap-10px{
+	gap: 10px;
+}
+
+.w-25{
+	width: 25dvw;
+}
+.h-80{
+	height: 80vh;
+}
+.w-90{
+	width: 90%;
+}
+
+.mx-auto{
+	margin-inline: auto;
+}
+.max-w25{
+	max-width: 25vw;
+}
+.input-message{
+	outline: transparent;
+}
+.t-0{
+	top: 0;
+}
+
+.sticky{
+	position: sticky;
+}
+
+.chat-user{
+	background-color: cadetblue;
+	padding: 1em;
+}
+.btn{
+	padding: 0.5em;
+}
+.md-flex{
+	display: none;
+}
+.md-none{
+	display: none;
+}
+
+.avatar{
+	border: 1px solid white;
+    border-radius: 50%;
+    scale: 1.2;
+    padding: 2px;
+}
+@media screen and (width<=600px) {
+    .hide{
+        display: none;
+    }
+	.w-full{
+		width: 100%;
+	}
+	.md-flex{
+		display: flex;
+	}
+	.md-none{
+		display: block;
+	}
+	.md-nav{
+		position: absolute;
+		right: 0;
+		z-index: 10;
+		background: #3a2b2b;
+		gap: 1em;
+		padding: 1em;
+	}
+}
+
